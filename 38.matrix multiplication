@@ -1,0 +1,9 @@
+
+matrix = [
+    [4, 6, 7, 8],
+    [3, 7, 2, 7],
+    [7, 3, 7, 5]
+]
+transpose = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
+for row in transpose:
+    print(row)
