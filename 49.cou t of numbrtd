@@ -1,0 +1,32 @@
+
+def count_characters():
+    num_uppercase = 0
+    num_lowercase = 0
+    num_digits = 0
+    other_char=0
+
+    print("Enter characters one by one. Enter '*' to stop.")
+    
+    while True:
+        char = input("Enter a character: ")
+
+        if char == '*':
+            break
+
+        if char.isupper():
+            num_uppercase += 1
+        elif char.islower():
+            num_lowercase += 1
+        elif char.isdigit():
+            num_digits += 1
+        else:
+            other_char +=1
+
+    return num_uppercase, num_lowercase, num_digits,other_char
+
+num_uppercase, num_lowercase, num_digits,other_char= count_characters()
+
+print(f"Number of uppercase letters: {num_uppercase}")
+print(f"Number of lowercase letters: {num_lowercase}")
+print(f"Number of digits: {num_digits}")
+
