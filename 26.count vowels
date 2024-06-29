@@ -1,0 +1,41 @@
+ef count_vowels_and_consonants(s):
+    vowels = "aeiouAEIOU"
+    num_vowels = 0
+    num_consonants = 0
+
+    for char in s:
+        if char.isalpha():  # Check if the character is a letter
+            if char in vowels:
+                num_vowels += 1
+            else:
+                num_consonants += 1
+
+    return num_vowels, num_consonants
+
+def main():
+    
+    user_string = input("Enter a string: ")
+
+  
+    num_vowels, num_consonants = count_vowels_and_consonants(user_string)
+
+  
+    if num_vowels > num_consonants:
+        max_type = "vowels"
+        max_count = num_vowels
+    elif num_consonants > num_vowels:
+        max_type = "consonants"
+        max_count = num_consonants
+    else:
+        max_type = "equal number of vowels and consonants"
+        max_count = num_vowels  # or num_consonants, since they are equal
+
+    
+    print(f"Number of vowels: {num_vowels}")
+    print(f"Number of consonants: {num_consonants}")
+    if max_type == "equal number of vowels and consonants":
+        print("The string has an equal number of vowels and consonants.")
+    else:
+        print(f"The string has more {max_type}: {max_count}")
+
+main()
