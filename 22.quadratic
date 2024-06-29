@@ -1,0 +1,24 @@
+
+import re
+
+def extract_coefficients(equation):
+
+    equation = equation.replace(" ", "")
+    
+    pattern = r'([+-]?\d*)x\^2([+-]?\d*)x([+-]?\d*)=0'
+    match = re.match(pattern, equation)
+    
+    if not match:
+        raise ValueError("Invalid quadratic equation format")
+
+    a, b, c = match.groups()
+    
+    a = int(a) if a and a not in ['+', '-'] else int(a + '1')
+    b = int(b) if b else 0
+    c = int(c) if c else 0
+
+    return a, b, c
+
+equation = "2x^2 - 3x + 5 = 0"
+a, b, c = extract_coefficients(equation)
+print(f"a = {a}, b = {b}, c = {c}")
