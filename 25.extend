@@ -1,0 +1,17 @@
+
+def input_list(prompt):
+    return list(map(int, input(prompt).split()))
+
+def merge_and_extend_list(list1, list2):
+
+    list2.extend(list1)
+    return list1
+
+
+print("Enter elements of the first list separated by spaces:")
+list1 = input_list("List 1: ")
+print("Enter elements of the second list separated by spaces:")
+list2 = input_list("List 2: ")
+
+extended_list = merge_and_extend_list(list1, list2)
+print("Extended List:", extended_list)
