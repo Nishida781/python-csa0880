@@ -1,0 +1,8 @@
+
+def first_letters(sentence):
+    words = sentence.split()
+    first_letters = '.'.join(word[0] for word in words)
+    return first_letters.upper()
+
+sentence = "The cat on the wall"
+print(first_letters(sentence))
