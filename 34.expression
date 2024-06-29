@@ -1,0 +1,77 @@
+def evaluate_expression(expression):
+    def precedence(op):
+        if op == '+' or op == '-':
+            return 1
+        if op == '*' or op == '/':
+            return 2
+        return 0
+
+    def apply_op(operators, values):
+        right = values.pop()
+        left = values.pop()
+        op = operators.pop()
+        if op == '+':
+            values.append(left + right)
+        elif op == '-':
+            values.append(left - right)
+        elif op == '*':
+            values.append(left * right)
+        elif op == '/':
+            values.append(left / right)
+
+    def is_operator(c):
+        return c in "+-*/"
+
+    
+    values = []
+    operators = []
+    i = 0
+
+    while i < len(expression):
+       
+        if expression[i] == ' ':
+            i += 1
+            continue
+
+       
+        if expression[i].isdigit():
+            val = 0
+            while i < len(expression) and expression[i].isdigit():
+                val = (val * 10) + int(expression[i])
+                i += 1
+            values.append(val)
+            i -= 1  
+
+        
+        elif expression[i] == '(':
+            operators.append(expression[i])
+
+        
+        elif expression[i] == ')':
+            while len(operators) != 0 and operators[-1] != '(':
+                apply_op(operators, values)
+            operators.pop()
+
+        elif is_operator(expression[i]):
+            while (len(operators) != 0 and
+                   precedence(operators[-1]) >= precedence(expression[i])):
+                apply_op(operators, values)
+            operators.append(expression[i])
+
+        i += 1
+
+
+    while len(operators) != 0:
+        apply_op(operators, values)
+
+   
+    return values[-1]
+
+
+expression = "2 + 3 * 4"
+result = evaluate_expression(expression)
+print(result)  
+n = 5
+
+output = fizz_buzz(n)
+print(output)
